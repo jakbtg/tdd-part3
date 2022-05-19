@@ -36,8 +36,12 @@ describe("Random test", () => {
         expect(random1).to.equal(random2);
     });
 
-    // I can check if the random number is in the range.
+    // I can check many times if the random number is in the range.
     it("get random int", () => {
+        expect(getRandomInt(0, 10)).to.be.within(0, 10);
+        expect(getRandomInt(0, 10)).to.be.within(0, 10);
+        expect(getRandomInt(0, 10)).to.be.within(0, 10);
+        expect(getRandomInt(0, 10)).to.be.within(0, 10);
         expect(getRandomInt(0, 10)).to.be.within(0, 10);
     });
 });
