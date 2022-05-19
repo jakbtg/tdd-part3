@@ -5,6 +5,7 @@
   "license": "TODO",
   "private": true,
   "dependencies": {
+    "chai-fs": "^2.0.0",
     "lodash": "^4.17.15"
   },
   "devDependencies": {

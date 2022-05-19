@@ -1,5 +1,6 @@
 import { expect } from "chai";
-import { now, Singleton, getRandomInt } from "../src/Untestables.mjs";
+import { now, Singleton, getRandomInt, readFile, writeFile, removeFile } from "../src/Untestables.mjs";
+import {} from "chai-fs";
 
 describe("Time test", () => {
     // This test won't pass all the time, but randomly.
@@ -34,9 +35,33 @@ describe("Random test", () => {
         let random2 = getRandomInt(0, 10);
         expect(random1).to.equal(random2);
     });
-    
+
     // I can check if the random number is in the range.
     it("get random int", () => {
         expect(getRandomInt(0, 10)).to.be.within(0, 10);
+    });
+});
+
+describe("File test", () => {
+    // I can write a file. But I always have to remove it, because otherwise it will be in the file system.
+    it("write file", () => {
+        writeFile("test.txt", "Hello!");
+        expect(readFile("test.txt")).to.equal("Hello!");
+        removeFile("test.txt");
+    });
+
+    // I cannot make this test pass, and don't know how to test the remove function.
+    // I was trying to use chai-fs, I found it here: https://www.chaijs.com/plugins/chai-fs/
+    it("remove file", () => {
+        writeFile("test.txt", "Hello!");
+        removeFile("test.txt");
+        expect("./test.txt").to.not.be.a.file();
+    });
+
+    // I can read a file.
+    it("read file", () => {
+        writeFile("test.txt", "Hello!");
+        expect(readFile("test.txt")).to.equal("Hello!");
+        removeFile("test.txt");
     });
 });
