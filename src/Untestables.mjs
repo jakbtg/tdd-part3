@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 export function now() {
     return new Date().getTime();
 }
@@ -24,4 +26,16 @@ export class Singleton {
 
 export function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function writeFile(fileName, content) {
+    fs.writeFileSync(fileName, content);
+}
+
+export function readFile(fileName) {
+    return fs.readFileSync(fileName, 'utf8');
+}
+
+export function removeFile(fileName) {
+    fs.unlinkSync(fileName);
 }
