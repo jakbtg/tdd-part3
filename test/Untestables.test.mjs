@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { now, Singleton, getRandomInt, readFile, writeFile, removeFile } from "../src/Untestables.mjs";
-import {} from "chai-fs";
+import "chai-fs";
 
 describe("Time test", () => {
     // This test won't pass all the time, but randomly.
