@@ -21,3 +21,7 @@ export class Singleton {
         return this.id;
     }
 }
+
+export function getRandomInt(min, max) {
+    return Math.random() * (max - min) + min;
+}
