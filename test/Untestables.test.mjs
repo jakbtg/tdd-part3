@@ -1,7 +1,5 @@
 import { expect } from "chai";
-import { now } from "../src/Untestables.mjs";
-import { Singleton } from "../src/Untestables.mjs";
-import { getRandomInt } from "../src/Untestables.mjs";
+import { now, Singleton, getRandomInt } from "../src/Untestables.mjs";
 
 describe("Time test", () => {
     // This test won't pass all the time, but randomly.
@@ -16,6 +14,16 @@ describe("Singleton test", () => {
         const instance1 = new Singleton("1");
         const instance2 = new Singleton("1");
         expect(instance1.getId()).to.equal(instance2.getId());
+    });
+
+    // I can check if it's already instantiated.
+    it("check if it's already instantiated", () => {
+        expect(Singleton.instance).to.exist;
+    });
+
+    // And I can get the id.
+    it("get id", () => {
+        expect(Singleton.instance.getId()).to.equal("1");
     });
 });
 
